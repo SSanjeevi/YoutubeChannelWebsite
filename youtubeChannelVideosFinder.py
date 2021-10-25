@@ -312,9 +312,7 @@ def main():
 
             for videoURL in videoURLs:
                 f.write(
-                    "{% include youtubePlayer.html id='" + videoURL + "' %}\n")
-                f.write("          ------          \n\n")
-
+                    "{% include youtubePlayer.html id='" + videoURL + "' %}")
             f.close()
         else:
             for videoURL in videoURLs:
