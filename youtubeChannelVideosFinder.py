@@ -294,7 +294,7 @@ def main():
             videoId = video.get('id').get('videoId')
             log.debug('Video id: %s', videoId)
             videoURL = getVideoURL(videoId)
-            videoURLs.append(videoURL)
+            videoURLs.append(videoId)
         if(args.outputFilePath != None and args.outputFilePath != ''):
             log.debug('File output enabled')
             log.info('Links will be written to %s', args.outputFilePath)
@@ -308,8 +308,11 @@ def main():
                 raise Exception(
                     'Impossible to write the links to the output file. Verify that the path is correct and that it is accessible/can be created/can be written to')
 
+            f.write("## Welcome to Youtube Channel\n\n\n")
+
             for videoURL in videoURLs:
-                f.write(videoURL+"\n")
+                f.write("{% include youtubePlayer.html id=" + videoURL + " %}")
+                f.write("          ------          \n\n")
 
             f.close()
         else:
