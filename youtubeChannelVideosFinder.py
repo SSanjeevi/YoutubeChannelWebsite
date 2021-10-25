@@ -311,7 +311,8 @@ def main():
             f.write("## Welcome to Youtube Channel\n\n\n")
 
             for videoURL in videoURLs:
-                f.write("{% include youtubePlayer.html id=" + videoURL + " %}")
+                f.write(
+                    "{% include youtubePlayer.html id='" + videoURL + "' %}\n")
                 f.write("          ------          \n\n")
 
             f.close()
