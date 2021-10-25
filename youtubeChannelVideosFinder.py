@@ -315,7 +315,7 @@ def main():
                     "{% include youtubePlayer.html id='" + videoURL + "' %}<br>")
 
             f.write(
-                "<h3>Videos-By-Sanjeevi</h3> <br> <a>https://github.com/SSanjeevi/videos</a>")
+                "Website-By-Sanjeevi <br> <a href='https://github.com/SSanjeevi/videos'>GitHub-Repo</a>")
             f.close()
         else:
             for videoURL in videoURLs:
