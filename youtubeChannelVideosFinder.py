@@ -308,11 +308,14 @@ def main():
                 raise Exception(
                     'Impossible to write the links to the output file. Verify that the path is correct and that it is accessible/can be created/can be written to')
 
-            f.write("## Welcome to Youtube Channel\n\n\n")
+            f.write("## Welcome to Youtube Channel\n\n\n<br><br>")
 
             for videoURL in videoURLs:
                 f.write(
-                    "{% include youtubePlayer.html id='" + videoURL + "' %}")
+                    "{% include youtubePlayer.html id='" + videoURL + "' %}<br>")
+
+            f.write(
+                "### Videos-By-Sanjeevi <br>https://github.com/SSanjeevi/videos\n\n\n")
             f.close()
         else:
             for videoURL in videoURLs:
