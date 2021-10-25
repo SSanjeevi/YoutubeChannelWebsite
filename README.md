@@ -1,6 +1,6 @@
 [![Youtube-Page-Generator](https://github.com/SSanjeevi/videos/actions/workflows/main.yml/badge.svg)](https://github.com/SSanjeevi/videos/actions/workflows/main.yml)
 
-# Videos
+# Videos-By-Sanjeevi
 Youtube Channel Website
 
 ## How to Reuse this Template which creates a personal website hosted in Github Pages using Jekyll and Github Actions for free!
