@@ -311,8 +311,8 @@ def main():
             for video in channelVideos:
                 log.debug('Processing video: %s', json.dumps(video, indent=4))
                 videoId = video.get('id').get('videoId')
-                snippetValue = video.get('snippet')
-                Videotitle = snippetValue.get('title')
+                snippetValue = video.snippet
+                Videotitle = snippetValue.title
                 f.write(
                     Videotitle + "<br>")
                 publishedDateTime = snippetValue.get(
