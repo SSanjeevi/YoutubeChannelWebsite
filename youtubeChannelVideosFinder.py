@@ -282,6 +282,8 @@ def main():
 
         channelVideos = getChannelVideos(
             channelId, dateToStartFrom, dateToGoBackTo, timeInterval)
+        retVal = []
+        retVal.extend(channelVideos)
 
         if(not len(channelVideos) > 0):
             log.info("No video found for that channel! Either there's none or a problem occurred. Enable verbose or debug logging for more details..")
@@ -308,9 +310,9 @@ def main():
             f.write("## Welcome to Youtube Channel<br><br>")
             count = 0
             pageCount = 0
-            for video in channelVideos:
+            for video in retVal:
                 log.debug('Processing video: %s', json.dumps(video, indent=4))
-                videoId = video.get('id').get('videoId')
+                videoId = video.id
                 snippetValue = video.snippet
                 Videotitle = snippetValue.title
                 f.write(
