@@ -304,7 +304,7 @@ def main():
 
             f = None
             try:
-                f = open('_posts/page.md', 'w')
+                f = open('_pages/page.md', 'w')
             except Exception as err:
                 log.critical(
                     'Could not create/open the output file!', exc_info=True)
@@ -324,7 +324,7 @@ def main():
                     count = 0
                     f = None
                     try:
-                        f = open('_posts/page' + str(pageCount) + '.md', 'w')
+                        f = open('_pages/page' + str(pageCount) + '.md', 'w')
                     except Exception as err:
                         log.critical(
                             'Could not create/open the output file!', exc_info=True)
