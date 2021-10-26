@@ -17,7 +17,7 @@ title: Youtube Channel Website
 <!-- Pagination links -->
 <div class="pagination">
   {% if paginator.previous_page %}
-  <a href="{{ baseurl }}{{ paginator.previous_page_path }}" class="previous">
+  <a href="{{ site.baseurl }}{{ paginator.previous_page_path }}" class="previous">
     Previous
   </a>
   {% else %}
@@ -27,7 +27,7 @@ title: Youtube Channel Website
     Page: {{ paginator.page }} of {{ paginator.total_pages }}
   </span>
   {% if paginator.next_page %}
-  <a href="{{ baseurl }}{{ paginator.next_page_path }}" class="next">Next</a>
+  <a href="{{ site.baseurl }}{{ paginator.next_page_path }}" class="next">Next</a>
   {% else %}
   <span class="next ">Next</span>
   {% endif %}
