@@ -289,12 +289,6 @@ def main():
 
         log.info('Generating links for found videos')
         videoURLs = []
-        for video in channelVideos:
-            log.debug('Processing video: %s', json.dumps(video, indent=4))
-            videoId = video.get('id').get('videoId')
-            log.debug('Video id: %s', videoId)
-            videoURL = getVideoURL(videoId)
-            videoURLs.append(videoId)
         if(args.outputFilePath != None and args.outputFilePath != ''):
             log.debug('File output enabled')
             log.info('Links will be written to %s', args.outputFilePath)
@@ -304,7 +298,7 @@ def main():
 
             f = None
             try:
-                f = open('_pages/page.md', 'w')
+                f = open('_posts/' + date_string + '-video.md', 'w')
             except Exception as err:
                 log.critical(
                     'Could not create/open the output file!', exc_info=True)
@@ -314,26 +308,33 @@ def main():
             f.write("## Welcome to Youtube Channel<br><br>")
             count = 0
             pageCount = 0
-            for videoURL in videoURLs:
+            for video in channelVideos:
+                log.debug('Processing video: %s', json.dumps(video, indent=4))
+                videoId = video.get('id').get('videoId')
+                snippetValue = video.get('snippet').get('snippetValue')
+                Videotitle = snippetValue.get('title').get('Videotitle')
+                f.write(
+                    Videotitle + "<br>")
+                publishedDateTime = snippetValue.get(
+                    'publishedAt').get('publishedDateTime')
+                date = publishedDateTime.strftime('%Y-%m-%d')
+                log.debug('Video id: %s', videoId)
                 count = count + 1
-                if count == 6:
-                    pageCount = pageCount + 1
-                    f.write(
-                        "Website-By-Sanjeevi <br> <a href='https://github.com/SSanjeevi/videos'>GitHub-Repo</a>")
-                    f.close()
-                    count = 0
-                    f = None
-                    try:
-                        f = open('_pages/page' + str(pageCount) + '.md', 'w')
-                    except Exception as err:
-                        log.critical(
-                            'Could not create/open the output file!', exc_info=True)
-                        raise Exception(
-                            'Impossible to write the links to the output file. Verify that the path is correct and that it is accessible/can be created/can be written to')
+                try:
+                    f = open('_posts/' + date +
+                             '-video' + str(count) + '.md', 'w')
+                except Exception as err:
+                    log.critical(
+                        'Could not create/open the output file!', exc_info=True)
+                    raise Exception(
+                        'Impossible to write the links to the output file. Verify that the path is correct and that it is accessible/can be created/can be written to')
 
                 f.write(
-                    "{% include youtubePlayer.html id='" + videoURL + "' %}<br>")
+                    "{% include youtubePlayer.html id='" + videoId + "' %}<br>")
 
+            f.write(
+                "Website-By-Sanjeevi <br> <a href='https://github.com/SSanjeevi/videos'>GitHub-Repo</a>")
+            f.close
         else:
             for videoURL in videoURLs:
                 print(videoURL)
