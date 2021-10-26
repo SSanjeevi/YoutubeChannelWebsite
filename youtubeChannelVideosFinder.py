@@ -313,9 +313,9 @@ def main():
             for video in retVal:
                 log.debug('Processing video: %s', json.dumps(video, indent=4))
                 videoId = video.get('id').get('videoId')
-                snippetValue = video.get('snippet').get('snippetValue')
+                snippetValue = video['snippet']
 
-                Videotitle = snippetValue.get('title')
+                Videotitle = snippetValue['title']
                 f.write(
                     Videotitle + "<br>")
                 publishedDateTime = snippetValue.get(
