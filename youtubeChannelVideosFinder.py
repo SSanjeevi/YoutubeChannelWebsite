@@ -313,14 +313,15 @@ def main():
             for video in retVal:
                 log.debug('Processing video: %s', json.dumps(video, indent=4))
                 videoId = video.get('id').get('videoId')
-                snippetValue = video['snippet']
+                # snippetValue = video['snippet']
 
-                Videotitle = snippetValue['title']
-                f.write(
-                    Videotitle + "<br>")
-                publishedDateTime = snippetValue.get(
-                    'publishedAt').get('publishedDateTime')
-                date = publishedDateTime.strftime('%Y-%m-%d')
+                # Videotitle = snippetValue['title']
+                # f.write(
+                #     Videotitle + "<br>")
+                # publishedDateTime = snippetValue.get(
+                #     'publishedAt').get('publishedDateTime')
+                # date = publishedDateTime.strftime('%Y-%m-%d')
+                date = date_string
                 log.debug('Video id: %s', videoId)
                 count = count + 1
                 try:
