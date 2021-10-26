@@ -324,7 +324,7 @@ def main():
                     count = 0
                     f = None
                     try:
-                        f = open('_posts/' + + date_string +
+                        f = open('_posts/' + date_string +
                                  'page' + str(pageCount) + '.md', 'w')
                     except Exception as err:
                         log.critical(
