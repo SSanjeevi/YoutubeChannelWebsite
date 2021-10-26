@@ -301,7 +301,7 @@ def main():
 
             f = None
             try:
-                f = open(args.outputFilePath, 'w')
+                f = open('_posts/page.md', 'w')
             except Exception as err:
                 log.critical(
                     'Could not create/open the output file!', exc_info=True)
@@ -309,14 +309,28 @@ def main():
                     'Impossible to write the links to the output file. Verify that the path is correct and that it is accessible/can be created/can be written to')
 
             f.write("## Welcome to Youtube Channel<br><br>")
-
+            count = 0
+            pageCount = 0
             for videoURL in videoURLs:
+                count = count + 1
+                if count == 6:
+                    pageCount = pageCount + 1
+                    f.write(
+                        "Website-By-Sanjeevi <br> <a href='https://github.com/SSanjeevi/videos'>GitHub-Repo</a>")
+                    f.close()
+                    count = 0
+                    f = None
+                    try:
+                        f = open('_posts/page' + pageCount + '.md', 'w')
+                    except Exception as err:
+                        log.critical(
+                            'Could not create/open the output file!', exc_info=True)
+                        raise Exception(
+                            'Impossible to write the links to the output file. Verify that the path is correct and that it is accessible/can be created/can be written to')
+
                 f.write(
                     "{% include youtubePlayer.html id='" + videoURL + "' %}<br>")
 
-            f.write(
-                "Website-By-Sanjeevi <br> <a href='https://github.com/SSanjeevi/videos'>GitHub-Repo</a>")
-            f.close()
         else:
             for videoURL in videoURLs:
                 print(videoURL)
