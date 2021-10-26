@@ -312,9 +312,9 @@ def main():
             pageCount = 0
             for video in retVal:
                 log.debug('Processing video: %s', json.dumps(video, indent=4))
-                videoId = video['id']
-                snippetValue = video['snippet']
-                Videotitle = snippetValue['title']
+                videoId = video.get(id).get('videoId')
+                snippetValue = video.get('snippet')
+                Videotitle = snippetValue.get('title')
                 f.write(
                     Videotitle + "<br>")
                 publishedDateTime = snippetValue.get(
