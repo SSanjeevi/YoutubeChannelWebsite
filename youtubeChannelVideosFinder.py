@@ -304,7 +304,7 @@ def main():
 
             f = None
             try:
-                f = open('_posts/-page.md', 'w')
+                f = open('_posts/page.md', 'w')
             except Exception as err:
                 log.critical(
                     'Could not create/open the output file!', exc_info=True)
