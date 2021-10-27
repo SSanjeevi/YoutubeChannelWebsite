@@ -3,6 +3,11 @@
 # Videos-By-Sanjeevi
 Youtube Channel Website
 
+## YouTube Channel Website Features:
+1. Free Hosting using GitHub Pages and open-source code base in GitHub.
+2. It can update all the videos, title, and description available inside the channel into the website everyday automatically using the GitHub Actions feature.
+2. No need to manually do any step after posting any new video in YouTube, it will be updated in website on next day.
+
 ## How to Reuse this Template which creates a personal website hosted in Github Pages using Jekyll and Github Actions for free!
 
 1. Fork this repo: [Fork this on github](https://github.com/SSanjeevi/YoutubeChannelWebsite/fork)
