@@ -14,6 +14,20 @@ Youtube Channel Website
 3. Enable the repo as github pages, your website is ready.
 
 
+## Samples created by this tool:
+https://github.com/LKG-in-IT/YoutubeChannelWebsite
+
+## Demo 1:
+https://lkg-in-it.github.io/YoutubeChannelWebsite/
+
+## Demo 2:
+https://ssanjeevi.github.io/YoutubeChannelWebsite/
+
+
+## Detailed Article:
+https://lkgforit.com/personal-youtube-channel-videos-website-hosted-in-github-pages-for-free-which-populates-content-by-itself
+
+
 Reference:
 
 https://github.com/dsebastien/youtubeChannelVideosFinder
