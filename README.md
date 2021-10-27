@@ -28,6 +28,8 @@ https://lkg-in-it.github.io/YoutubeChannelWebsite/
 ## Demo 2:
 https://ssanjeevi.github.io/YoutubeChannelWebsite/
 
+## Demo 3
+https://tnpscquickies.github.io/YoutubeChannelWebsite/
 
 ## Detailed Article:
 https://lkgforit.com/personal-youtube-channel-videos-website-hosted-in-github-pages-for-free-which-populates-content-by-itself
