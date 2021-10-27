@@ -346,8 +346,6 @@ def main():
                 publishedDateTime = datetime.datetime.strptime(publishedAt,'%Y-%m-%dT%H:%M:%SZ')
                 print(type(publishedDateTime)) 
                 date = publishedDateTime.strftime('%Y-%m-%d')
-                if count == 0:                    
-                    f.write("<h1>" + channelTitle + "</h1><br><br>")
 
                 count = count + 1
                 try:
@@ -355,14 +353,14 @@ def main():
                 except Exception as err:
                     log.critical('Could not create/open the output file!', exc_info=True)  
                     raise Exception('Impossible to write the links to the output file. Verify that the path is correct and that it is accessible/can be created/can be written to')                    
-                
+                               
+                f.write("<h1>" + channelTitle + "</h1><br><br>")
                 head = '---'
                 f.write(head + '\n')
                 f.write('layout : null' + '\n')
                 f.write('title : ' + title + '\n')
                 f.write(head + '\n')            
-                f.write("<h3>" + title + "</h3><br>" + '\n')
-                f.write("<br><p>" + description + "</p><br>" + '\n')
+                f.write(description + '\n')
                 log.debug('Video id: %s', videoId)
                 f.write("{% include youtubePlayer.html id='" + videoId + "' %}<br>")   
 
