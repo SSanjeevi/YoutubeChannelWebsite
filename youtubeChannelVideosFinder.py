@@ -354,15 +354,25 @@ def main():
                     log.critical('Could not create/open the output file!', exc_info=True)  
                     raise Exception('Impossible to write the links to the output file. Verify that the path is correct and that it is accessible/can be created/can be written to')                    
                                
-                f.write("<h1>" + channelTitle + "</h1><br><br>")
+                #if count == 0:
+                #try:
+                #    index = open('index.html', 'w')
+                #    index.write("<h1>" + channelTitle + "</h1><br><br>")
+                #except Exception as err:
+                #    log.critical('Could not create/open the output file!',
+                #    exc_info=True)
+                #    raise Exception('Impossible to write the links to the
+                #    output file.  Verify that the path is correct and that it
+                #    is accessible/can be created/can be written to')
+                         
                 head = '---'
                 f.write(head + '\n')
                 f.write('layout : null' + '\n')
                 f.write('title : ' + title + '\n')
-                f.write(head + '\n')            
-                f.write(description + '\n')
+                f.write(head + '\n\n')            
+                f.write(description + '\n\n\n\n')
                 log.debug('Video id: %s', videoId)
-                f.write("{% include youtubePlayer.html id='" + videoId + "' %}<br>")   
+                f.write("{% include youtubePlayer.html id='" + videoId + "' %}\n")   
 
             f.write("Website-By-Sanjeevi <br> <a href='https://github.com/SSanjeevi/videos'>GitHub-Repo</a>")            
             f.close
