@@ -349,23 +349,24 @@ def main():
                 if count == 0:                    
                     f.write("<h1>" + channelTitle + "</h1><br><br>")
 
-                f.write(title + "<br>")
+                head = '---'
+                f.write(head + "<br>")
+                f.write('layout : null' + "<br>")
+                f.write('title : ' + title + "<br>")
+                f.write(head + "<br>")            
+                f.write("<h3>" + title + "</h3><br>")
                 f.write("<br><p>" + description + "</p><br>")
                 log.debug('Video id: %s', videoId)
                 count = count + 1
                 try:
-                    f = open('_posts/' + date + '-' + title + '.md', 'w')                    
-                    f = open('_posts/' + date + '-video' + str(count) + '.md', 'w')
+                    f = open('_posts/' + date + '-video' + str(count) + '.md', 'w')       
                 except Exception as err:
-                    log.critical('Could not create/open the output file!', exc_info=True)                    
-                    log.critical('Could not create/open the output file!', exc_info = True)
+                    log.critical('Could not create/open the output file!', exc_info=True)  
                     raise Exception('Impossible to write the links to the output file. Verify that the path is correct and that it is accessible/can be created/can be written to')                    
 
-                f.write("{% include youtubePlayer.html id='" + videoId + "' %}<br>")                
-                f.write("{% include youtubePlayer.html id='" + videoId + "' %}<br>")
+                f.write("{% include youtubePlayer.html id='" + videoId + "' %}<br>")   
 
             f.write("Website-By-Sanjeevi <br> <a href='https://github.com/SSanjeevi/videos'>GitHub-Repo</a>")            
-            f.write("Website-By-Sanjeevi <br> <a href='https://github.com/SSanjeevi/videos'>GitHub-Repo</a>")
             f.close
         else:
             for videoURL in videoURLs:
