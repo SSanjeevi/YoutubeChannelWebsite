@@ -357,12 +357,12 @@ def main():
                     raise Exception('Impossible to write the links to the output file. Verify that the path is correct and that it is accessible/can be created/can be written to')                    
                 
                 head = '---'
-                f.write(head + "<br>")
-                f.write('layout : null' + "<br>")
-                f.write('title : ' + title + "<br>")
-                f.write(head + "<br>")            
-                f.write("<h3>" + title + "</h3><br>")
-                f.write("<br><p>" + description + "</p><br>")
+                f.write(head + '\n')
+                f.write('layout : null' + '\n')
+                f.write('title : ' + title + '\n')
+                f.write(head + '\n')            
+                f.write("<h3>" + title + "</h3><br>" + '\n')
+                f.write("<br><p>" + description + "</p><br>" + '\n')
                 log.debug('Video id: %s', videoId)
                 f.write("{% include youtubePlayer.html id='" + videoId + "' %}<br>")   
 
