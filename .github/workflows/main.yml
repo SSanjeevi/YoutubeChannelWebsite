@@ -1,8 +1,6 @@
     name: Youtube-Page-Generator
     
-    on:     
-      schedule:
-        - cron: "0 0 * * *" #runs at 00:00 UTC everyday
+    on: push
 
     jobs:
       build:
@@ -17,7 +15,7 @@
               python-version: 3.8 #install the python needed
           - name: execute py script # run the run.py to get the latest data
             run: |
-              python ./youtubeChannelVideosFinder.py -k ${{ secrets.GOOGLEAPIKEY }} -c 'UCnYzqHl_und412jN2RTjJVA' --output-file-path index.md -i 200
+              python ./youtubeChannelVideosFinder.py -k ${{ secrets.GOOGLEAPIKEY }} -c 'UCDLfIVSX9tnV_c50dwbBUSw' --output-file-path index.md -i 700
               
               
           - name: Commit and push update

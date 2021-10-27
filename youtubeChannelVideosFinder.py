@@ -13,6 +13,7 @@ import argparse
 import logging
 import urllib.request
 
+
 from rfc3339 import rfc3339
 
 
@@ -25,9 +26,8 @@ from rfc3339 import rfc3339
 # 		https://docs.python.org/2/library/argparse.html
 #		http://pymotw.com/2/argparse/
 #		https://docs.python.org/2/howto/argparse.html
-
-parser = argparse.ArgumentParser(
-    description='This program finds all videos in a given Youtube channel')
+parser = argparse.ArgumentParser(description='This program finds all videos in a given Youtube channel')
+parser = argparse.ArgumentParser(description = 'This program finds all videos in a given Youtube channel')
 
 parser.add_argument('-k', '--api-key', dest='apiKey', action='store', required=True,
                     help='Google Data API key to use. You can get one here: https://console.developers.google.com')
@@ -54,7 +54,10 @@ outputDetailLevel.add_argument('-d', '--debug', dest='debug', action='store_true
 parser.add_argument('-l', '--log-file-path', dest='logFilePath', action='store',
                     help='File to write the logs to (content replaced each time). If this option is not specified, the logs are sent to the standard output (according to the verbosity level)')
 
-# aka how much time can we lose while programming :p (https://code.google.com/p/argparse/issues/detail?id=43)
+# aka how much time can we lose while programming :p# aka how much time can we
+# lose while programming :p
+# (https://code.google.com/p/argparse/issues/detail?id=43)
+# (https://code.google.com/p/argparse/issues/detail?id=43)
 parser.add_argument('--version', action='version', version='1.0')
 
 args = parser.parse_args()
@@ -65,14 +68,15 @@ log = logging.getLogger('_name_')
 
 handler = None
 if(args.logFilePath is not None):
-    handler = logging.FileHandler(
-        args.logFilePath, "w", encoding=None, delay="true")
+    handler = logging.FileHandler(args.logFilePath, "w", encoding=None, delay="true")    
+    handler = logging.FileHandler(args.logFilePath, "w", encoding = None, delay = "true")
 else:
     handler = logging.StreamHandler()
 
 logFormat = '[%(asctime)s] [%(levelname)s] - %(message)s'
-# format ref: https://docs.python.org/2/library/logging.html#logrecord-attributes
-
+# format ref:# format ref:
+# https://docs.python.org/2/library/logging.html#logrecord-attributes#
+# https://docs.python.org/2/library/logging.html#logrecord-attributes
 handler.setFormatter(logging.Formatter(logFormat))
 
 log.addHandler(handler)
@@ -104,7 +108,7 @@ log.info('Date to start from: %s', dateToStartFrom)
 if(args.dateTo is not None):
     dateToGoBackTo = datetime.datetime.strptime(args.dateTo, '%Y-%m-%d')
 else:
-    dateToGoBackTo = dateToStartFrom - datetime.timedelta(weeks=4)
+    dateToGoBackTo = dateToStartFrom - datetime.timedelta(weeks=114)
 
 log.info('Date to go back to: %s', dateToGoBackTo)
 
@@ -127,14 +131,12 @@ youtubeSearchApiUrl = youtubeApiUrl + 'search?key={0}&'.format(args.apiKey)
 requestParametersChannelId = youtubeChannelsApiUrl + 'id={0}&part=id'
 requestChannelVideosInfo = youtubeSearchApiUrl + \
     'channelId={0}&part=id&order=date&type=video&publishedBefore={1}&publishedAfter={2}&pageToken={3}&maxResults=50'
-
+videoDetailsUrl = youtubeApiUrl + 'videos?part=snippet%2CcontentDetails%2Cstatistics&id={0}&key=' + args.apiKey
 youtubeVideoUrl = '%[https://www.youtube.com/watch?v={0}]  \n'
 
 # ------------------------------------------
 # Functions
 # ------------------------------------------
-
-
 def getChannelId(channelName):
     log.info('Searching channel id for channel: %s', channelName)
     retVal = -1
@@ -159,15 +161,43 @@ def getChannelId(channelName):
             log.info('Channel id found: %s', str(retVal))
         else:
             log.debug('Response received but it contains no item')
-            raise Exception(
-                'The channel id could not be retrieved. Make sure that the channel name is correct')
+            raise Exception('The channel id could not be retrieved. Make sure that the channel name is correct')            
 
         if(responseAsJson['pageInfo'].get('totalResults') > 1):
-            log.debug(
-                'Multiple channels were received in the response. If this happens, something can probably be improved around here')
+            log.debug('Multiple channels were received in the response. If this happens, something can probably be improved around here')            
+            log.debug('Multiple channels were received in the response. If this happens, something can probably be improved around here')
     except Exception as err:
-        log.error(
-            'An exception occurred while trying to retrieve the channel id', exc_info=True)
+        log.error('An exception occurred while trying to retrieve the channel id', exc_info=True)        
+        log.error('An exception occurred while trying to retrieve the channel id', exc_info=True)
+    return retVal
+
+
+def getVideoDetailsById(videoId):
+    log.info('Searching video from videoid for channel: %s', videoId)
+    retVal = -1
+    try:
+        url = videoDetailsUrl.format(videoId)
+        log.debug("Request: %s", url)
+
+        log.debug('Sending request')
+        response = urllib.request.urlopen(url)
+
+        log.debug('Parsing the response')
+        responseAsJson = json.load(response)
+
+        response.close()
+
+        log.debug('Response: %s', json.dumps(responseAsJson, indent=4))
+        
+        returnedVideos = responseAsJson['items']
+        log.debug('Response: %s', json.dumps(returnedVideos, indent=4))
+
+        for video in returnedVideos:
+            retVal = video
+
+    except Exception as err:
+        log.error('An exception occurred while trying to retrieve the video details', exc_info=True)        
+        log.error('An exception occurred while trying to retrieve the video details', exc_info=True)
 
     return retVal
 
@@ -182,8 +212,8 @@ def getChannelVideosPublishedInInterval(channelId, publishedBefore, publishedAft
 
     while not foundAll:
         try:
-            url = requestChannelVideosInfo.format(
-                channelId, publishedBefore, publishedAfter, nextPageToken)
+            url = requestChannelVideosInfo.format(channelId, publishedBefore, publishedAfter, nextPageToken)            
+            url = requestChannelVideosInfo.format(channelId, publishedBefore, publishedAfter, nextPageToken)
             log.debug('Request: %s', url)
 
             log.debug('Sending request')
@@ -207,8 +237,7 @@ def getChannelVideosPublishedInInterval(channelId, publishedBefore, publishedAft
                 log.info('No more videos to load')
                 foundAll = True
         except Exception as err:
-            log.error(
-                'An exception occurred while trying to retrieve a subset of the channel videos. Stopping search.', exc_info=True)
+            log.error('An exception occurred while trying to retrieve a subset of the channel videos. Stopping search.', exc_info=True)
             foundAll = True
 
     log.info('Found %d video(s) in this time interval', len(retVal))
@@ -219,8 +248,7 @@ def getChannelVideos(channelId, dateToStartFrom, dateToGoBackTo, timeInterval):
     log.info('Searching for videos published in channel between %s and %s',
              dateToStartFrom, dateToGoBackTo)
     if(dateToStartFrom < dateToGoBackTo):
-        raise Exception(
-            'The date to start from cannot be before the date to go back to!')
+        raise Exception('The date to start from cannot be before the date to go back to!')    
 
     retVal = []
 
@@ -232,8 +260,8 @@ def getChannelVideos(channelId, dateToStartFrom, dateToGoBackTo, timeInterval):
 
     while not done:
         if(goBackTo < dateToGoBackTo):
-            log.debug(
-                'The interval is now larger than the remaining time span to retrieve videos for. Using the date to go back to as next boundary')
+            log.debug('The interval is now larger than the remaining time span to retrieve videos for. Using the date to go back to as next boundary')            
+            log.debug('The interval is now larger than the remaining time span to retrieve videos for. Using the date to go back to as next boundary')
             goBackTo = dateToGoBackTo
 
         if(goBackTo == dateToGoBackTo):
@@ -244,8 +272,7 @@ def getChannelVideos(channelId, dateToStartFrom, dateToGoBackTo, timeInterval):
         goBackTo_rfc3339 = rfc3339(goBackTo, utc=True)
         startFrom_rfc3339 = rfc3339(startFrom, utc=True)
 
-        videosPublishedInInterval = getChannelVideosPublishedInInterval(
-            channelId, startFrom_rfc3339, goBackTo_rfc3339)
+        videosPublishedInInterval = getChannelVideosPublishedInInterval(channelId, startFrom_rfc3339, goBackTo_rfc3339)        
 
         log.debug('Adding videos found in the interval to the results list')
         retVal.extend(videosPublishedInInterval)
@@ -280,8 +307,7 @@ def main():
         if(channelId == -1):
             raise Exception('Impossible to continue without the channel id')
 
-        channelVideos = getChannelVideos(
-            channelId, dateToStartFrom, dateToGoBackTo, timeInterval)
+        channelVideos = getChannelVideos(channelId, dateToStartFrom, dateToGoBackTo, timeInterval) 
         retVal = []
         retVal.extend(channelVideos)
 
@@ -302,42 +328,53 @@ def main():
             try:
                 f = open('_posts/' + date_string + '-video.md', 'w')
             except Exception as err:
-                log.critical(
-                    'Could not create/open the output file!', exc_info=True)
-                raise Exception(
-                    'Impossible to write the links to the output file. Verify that the path is correct and that it is accessible/can be created/can be written to')
+                log.critical('Could not create/open the output file!', exc_info=True)                
+                log.critical('Could not create/open the output file!', exc_info = True)
+                raise Exception('Impossible to write the links to the output file. Verify that the path is correct and that it is accessible/can be created/can be written to')                
 
-            f.write("## Welcome to Youtube Channel<br><br>")
             count = 0
             pageCount = 0
             for video in retVal:
                 log.debug('Processing video: %s', json.dumps(video, indent=4))
                 videoId = video.get('id').get('videoId')
-                # snippetValue = video['snippet']
+                videoDetail = getVideoDetailsById(videoId)
+                snippetVal = videoDetail.get('snippet')
+                title = snippetVal.get('title')
+                channelTitle = snippetVal.get('channelTitle')
+                description = snippetVal.get('description')
+                publishedAt = snippetVal.get('publishedAt')
+                publishedDateTime = datetime.datetime.strptime(publishedAt,'%Y-%m-%dT%H:%M:%SZ')
+                print(type(publishedDateTime)) 
+                date = publishedDateTime.strftime('%Y-%m-%d')
 
-                # Videotitle = snippetValue['title']
-                # f.write(
-                #     Videotitle + "<br>")
-                # publishedDateTime = snippetValue.get(
-                #     'publishedAt').get('publishedDateTime')
-                # date = publishedDateTime.strftime('%Y-%m-%d')
-                date = date_string
-                log.debug('Video id: %s', videoId)
                 count = count + 1
                 try:
-                    f = open('_posts/' + date +
-                             '-video' + str(count) + '.md', 'w')
+                    f = open('_posts/' + date + '-video' + str(count) + '.md', 'w')       
                 except Exception as err:
-                    log.critical(
-                        'Could not create/open the output file!', exc_info=True)
-                    raise Exception(
-                        'Impossible to write the links to the output file. Verify that the path is correct and that it is accessible/can be created/can be written to')
+                    log.critical('Could not create/open the output file!', exc_info=True)  
+                    raise Exception('Impossible to write the links to the output file. Verify that the path is correct and that it is accessible/can be created/can be written to')                    
+                               
+                #if count == 0:
+                #try:
+                #    index = open('index.html', 'w')
+                #    index.write("<h1>" + channelTitle + "</h1><br><br>")
+                #except Exception as err:
+                #    log.critical('Could not create/open the output file!',
+                #    exc_info=True)
+                #    raise Exception('Impossible to write the links to the
+                #    output file.  Verify that the path is correct and that it
+                #    is accessible/can be created/can be written to')
+                         
+                head = '---'
+                f.write(head + '\n')
+                f.write('layout : null' + '\n')
+                f.write('title : ' + title + '\n')
+                f.write(head + '\n\n')            
+                f.write(description + '\n\n\n\n')
+                log.debug('Video id: %s', videoId)
+                f.write("{% include youtubePlayer.html id='" + videoId + "' %}\n")   
 
-                f.write(
-                    "{% include youtubePlayer.html id='" + videoId + "' %}<br>")
-
-            f.write(
-                "Website-By-Sanjeevi <br> <a href='https://github.com/SSanjeevi/videos'>GitHub-Repo</a>")
+            f.write("Website-By-Sanjeevi <br> <a href='https://github.com/SSanjeevi/videos'>GitHub-Repo</a>")            
             f.close
         else:
             for videoURL in videoURLs:
