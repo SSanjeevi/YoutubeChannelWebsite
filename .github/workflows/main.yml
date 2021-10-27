@@ -1,0 +1,27 @@
+    name: Youtube-Page-Generator
+    
+    on: push
+
+    jobs:
+      build:
+        runs-on: ubuntu-latest
+    
+        steps:
+          - name: checkout repo content
+            uses: actions/checkout@v2 # checkout the repository content to github runner.
+          - name: setup python
+            uses: actions/setup-python@v2
+            with:
+              python-version: 3.8 #install the python needed
+          - name: execute py script # run the run.py to get the latest data
+            run: |
+              python ./youtubeChannelVideosFinder.py -k ${{ secrets.GOOGLEAPIKEY }} -c 'UCDLfIVSX9tnV_c50dwbBUSw' --output-file-path index.md -i 700
+              
+              
+          - name: Commit and push update
+            run: |-
+              git config --global user.email "ssanjeevi.ss@gmail.com"
+              git config --global user.name "SSanjeevi"
+              git add -A
+              git commit -m "Updated Youtube channel page from GitHub Actions"
+              git push
