@@ -1,4 +1,4 @@
-theme: jekyll-theme-modernist
+theme: jekyll-theme-cayman
 paginate: 5
 paginate_path: "/:num/"
 baseurl: "/YoutubeChannelWebsite/"
