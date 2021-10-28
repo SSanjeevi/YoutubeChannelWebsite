@@ -343,7 +343,7 @@ def main():
                 description = snippetVal.get('description')
                 publishedAt = snippetVal.get('publishedAt')
                 publishedDateTime = datetime.datetime.strptime(publishedAt,'%Y-%m-%dT%H:%M:%SZ')
-                print(type(publishedDateTime)) 
+                
                 date = publishedDateTime.strftime('%Y-%m-%d')
 
                 count = count + 1
