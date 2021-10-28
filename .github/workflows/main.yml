@@ -1,8 +1,6 @@
     name: Youtube-Page-Generator
         
-    on:     
-      schedule:
-        - cron: "0 0 * * *" #runs at 00:00 UTC everyday
+    on: push
 
     jobs:
       build:
