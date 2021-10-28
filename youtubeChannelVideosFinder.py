@@ -12,7 +12,7 @@ import sys
 import argparse
 import logging
 import urllib.request
-
+import os
 
 from rfc3339 import rfc3339
 
@@ -323,6 +323,11 @@ def main():
 
             now = datetime.datetime.now()
             date_string = now.strftime('%Y-%m-%d')
+
+            #delete all existing files in folder before creating items.
+            dir = '_posts'
+            for f in os.listdir(dir):
+                os.remove(os.path.join(dir, f))
 
             f = None
             try:
