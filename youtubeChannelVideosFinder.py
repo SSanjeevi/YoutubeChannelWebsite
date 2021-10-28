@@ -368,6 +368,7 @@ def main():
                 f.write(head + '\n')
                 f.write('layout : null' + '\n')
                 f.write('title : ' + title + '\n')
+                print('fetching video -> ' + title)
                 f.write(head + '\n\n')            
                 f.write(description + '\n\n\n\n')
                 log.debug('Video id: %s', videoId)
