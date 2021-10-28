@@ -12,7 +12,7 @@ import sys
 import argparse
 import logging
 import urllib.request
-
+import os
 
 from rfc3339 import rfc3339
 
@@ -324,13 +324,12 @@ def main():
             now = datetime.datetime.now()
             date_string = now.strftime('%Y-%m-%d')
 
+            #delete all existing files in folder before creating items.
+            dir = '_posts'
+            for f in os.listdir(dir):
+                os.remove(os.path.join(dir, f))
+
             f = None
-            try:
-                f = open('_posts/' + date_string + '-video.md', 'w')
-            except Exception as err:
-                log.critical('Could not create/open the output file!', exc_info=True)                
-                log.critical('Could not create/open the output file!', exc_info = True)
-                raise Exception('Impossible to write the links to the output file. Verify that the path is correct and that it is accessible/can be created/can be written to')                
 
             count = 0
             pageCount = 0
@@ -344,7 +343,7 @@ def main():
                 description = snippetVal.get('description')
                 publishedAt = snippetVal.get('publishedAt')
                 publishedDateTime = datetime.datetime.strptime(publishedAt,'%Y-%m-%dT%H:%M:%SZ')
-                print(type(publishedDateTime)) 
+                
                 date = publishedDateTime.strftime('%Y-%m-%d')
 
                 count = count + 1
@@ -369,6 +368,7 @@ def main():
                 f.write(head + '\n')
                 f.write('layout : null' + '\n')
                 f.write('title : ' + title + '\n')
+                print('fetching video -> ' + title)
                 f.write(head + '\n\n')            
                 f.write(description + '\n\n\n\n')
                 log.debug('Video id: %s', videoId)
