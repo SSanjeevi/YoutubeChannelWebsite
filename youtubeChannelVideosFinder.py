@@ -330,12 +330,6 @@ def main():
                 os.remove(os.path.join(dir, f))
 
             f = None
-            try:
-                f = open('_posts/' + date_string + '-video.md', 'w')
-            except Exception as err:
-                log.critical('Could not create/open the output file!', exc_info=True)                
-                log.critical('Could not create/open the output file!', exc_info = True)
-                raise Exception('Impossible to write the links to the output file. Verify that the path is correct and that it is accessible/can be created/can be written to')                
 
             count = 0
             pageCount = 0
