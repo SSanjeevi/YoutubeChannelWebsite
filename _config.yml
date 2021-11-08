@@ -2,3 +2,5 @@ theme: jekyll-theme-leap-day
 paginate: 5
 paginate_path: "/:num/"
 baseurl: "/"
+plugins:
+  - jekyll-sitemap
