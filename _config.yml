@@ -1,4 +1,4 @@
-theme: jekyll-theme-cayman
+theme: jekyll-theme-slate
 paginate: 5
 paginate_path: "/:num/"
 baseurl: "/"
