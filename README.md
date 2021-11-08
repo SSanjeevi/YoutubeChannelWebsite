@@ -26,7 +26,7 @@ https://github.com/LKG-in-IT/YoutubeChannelWebsite
 https://lkg-in-it.github.io/YoutubeChannelWebsite/
 
 ## Demo 2:
-https://ssanjeevi.github.io/YoutubeChannelWebsite/
+https://tv.lkgforit.com/
 
 ## Demo 3
 https://tnpscquickies.github.io/YoutubeChannelWebsite/
