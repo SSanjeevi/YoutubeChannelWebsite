@@ -366,7 +366,6 @@ def main():
                          
                 head = '---'
                 f.write(head + '\n')
-                f.write('layout : null' + '\n')
                 f.write('title : ' + title + '\n')
                 print('fetching video -> ' + title)
                 f.write(head + '\n\n')            
