@@ -18,7 +18,7 @@
           - name: YouTube-Videos-As-Posts
             uses: SSanjeevi/YouTubeVideosAsPosts@Release1.0.1
             with:
-              GoogleApiKey: ${{ secrets.GoogleApiKey }}
+              GoogleApiKey: ${{ secrets.GOOGLEAPIKEY }}
               channelName: 'UCnYzqHl_und412jN2RTjJVA'
 
               
