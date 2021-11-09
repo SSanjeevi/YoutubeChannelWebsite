@@ -4,6 +4,9 @@
       schedule:
         - cron: "0 0 * * *" #runs at 00:00 UTC everyday
 
+      # Allows you to run this workflow manually from the Actions tab
+      workflow_dispatch:
+
     jobs:
       build:
         runs-on: ubuntu-latest
@@ -11,14 +14,13 @@
         steps:
           - name: checkout repo content
             uses: actions/checkout@v2 # checkout the repository content to github runner.
-          - name: setup python
-            uses: actions/setup-python@v2
+
+          - name: YouTube-Videos-As-Posts
+            uses: SSanjeevi/YouTubeVideosAsPosts@Release1.0.1
             with:
-              python-version: 3.8 #install the python needed
-          - name: execute py script # run the run.py to get the latest data
-            run: |
-              python ./youtubeChannelVideosFinder.py -k ${{ secrets.GOOGLEAPIKEY }} -c 'UCnYzqHl_und412jN2RTjJVA' --output-file-path index.md -i 700
-              
+              GoogleApiKey: ${{ secrets.GoogleApiKey }}
+              channelName: 'UCnYzqHl_und412jN2RTjJVA'
+
               
           - name: Commit and push update
             run: |-
