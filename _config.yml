@@ -2,8 +2,8 @@
 name: "LKGForIT"
 title: "LKG For IT"
 description: "LKG For IT!"
-logo: 'channel_profile.jpg'
-favicon: 'channel_profile.jpg'
+logo: 'Original.png'
+favicon: 'Original.png'
 baseurl: /
 google_analytics: 'UA-xxxxxxxx-1'
 disqus: 'demowebsite'
@@ -21,7 +21,7 @@ authors:
     email: wowthemesnet@gmail.com
     web: https://lkgforit.com/
     twitter: https://twitter.com/wowthemesnet
-    description: "Author of Exploring TRB Chemistry."
+    description: "Author of LKG For IT."
  
 # Plugins
 plugins:
