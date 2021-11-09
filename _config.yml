@@ -1,98 +1,72 @@
-### Site Settings ###
-title               : LKG For IT
-description         : >-
-                      LKG For IT YouTube Website.
-baseurl             : "/"                     # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
-remote_theme        : YoussefRaafatNasry/portfolYOU
-open_new_tab        : false                             # Opens external URLs in new tab (works for posts, projects and navbar only)
+# Site
+name: "LKGForIT"
+title: "LKG For IT"
+description: "LKG For IT!"
+logo: 'channel_profile.jpg'
+favicon: 'channel_profile.jpg'
+baseurl: /
+google_analytics: 'UA-xxxxxxxx-1'
+disqus: 'demowebsite'
+mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
+include: ["_pages"]
+permalink: /:title/
+email: lkgforit@gmail.com
 
-
-### Plugins ###
+# Authors
+authors:
+  sanjeevi:
+    name: Sanjeevi Subramani
+    display_name: sanjeevi
+    avatar: 'assets/images/avatar-sal.png'
+    email: wowthemesnet@gmail.com
+    web: https://lkgforit.com/
+    twitter: https://twitter.com/wowthemesnet
+    description: "Author of Exploring TRB Chemistry."
+ 
+# Plugins
 plugins:
-  - jemoji
+  - jekyll-paginate
   - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-archives
+  - jekyll-figure
+    
+# Archives
+jekyll-archives:
+  enabled:
+    - categories
+  layout: archive
+  permalinks:
+    category: '/category/:name/'
+    
+# Pagination 
+paginate: 6
+paginate_path: /page:num/
+    
+# Other
+highlighter: rouge
+markdown: kramdown
+kramdown:
+   syntax_highlighter_opts:
+      disable : true
 
 
-### Navbar Settings ###
-nav_exclude:                                            # The following paths are excluded from navbar
-  - pages/tags.html
-  - pages/404.html
-  - pages/index.md
-  - documentation/partials/**                           # For Documentation Only
 
+# Adsense (change to "enabled" to activate, also your client id and ad slot. Create a new ad unit from your Adsense account to get the slot.)
+adsense: "disabled"
+adsense-data-ad-client: "ca-pub-3412143450191416"
+adsense-data-ad-slot: "1363087678"
 
-### Author Info ###
-author:
-  name              : Sanjeevi Subramani
-  image             : /channel_profile.png
-  behance           : sanjeevi
-# dribbble          : your_username
-  email             : lkgforit@gmail.com
-  facebook          : your_username
-  github            : SSanjeevi
-# gitlab            : your_username
-# instagram         : your_username
-# kaggle            : your_username
-  linkedin          : sanjeevi-subramani
-  medium            : your_username
-# soundcloud        : your_username
-# spotify           : your_username
-# stackoverflow     : your_user_id
-# tumblr            : your_username.tumblr.com
-# twitch            : your_username
-  twitter           : your_username
-# vimeo             : your_username
-  youtube           : UCnYzqHl_und412jN2RTjJVA
-# keybase           : your_username
+# Lazy Images ("enabled" or "disabled")
+lazyimages: "disabled"
 
+# Post Author Box ("enabled" or "disabled")
+authorbox: "enabled"
 
-### Posts ###
-permalink: /blog/:title
+# Sass
+sass:
+  sass_dir: _sass
+  style: compressed
 
-
-### Collections ###
-collections:
-  projects:
-    output: true
-    permalink: /projects/:name
-  elements:                                             # For Documentation Only
-    output: true                                        # For Documentation Only
-
-
-### Disqus ###
-disqus:
-  shortname: your-short-name-disqus                     # Your website Shortname on disqus
-
-
-### Analytics ###
-analytics:
-  enabled: false                                        # Set true to enable analytics
-  google:
-    tracking_id: your-google-tracking-id
-
-
-### Defaults for collections ###
-defaults:
-  - scope:
-      path: ""
-      type: "projects"
-    values:
-      layout: "page"
-  - scope:                                              # For Documentation Only
-      path: ""                                          # For Documentation Only
-      type: "elements"                                  # For Documentation Only
-    values:                                             # For Documentation Only
-      layout: "element"                                 # For Documentation Only
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      comments: false                                   # Set to true to enable disqus comments
-
-
-### Exclude from processing ###
-exclude:
-  - README.md
-  - CONTRIBUTING.md
-  - LICENSE
-  - "*.log"
+exclude: [changelog.md, LICENSE.txt, README.md, Gemfile, Gemfile.lock]
