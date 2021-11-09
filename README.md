@@ -23,13 +23,13 @@ Youtube Channel Website
 https://github.com/LKG-in-IT/YoutubeChannelWebsite
 
 ## Demo 1:
-https://lkg-in-it.github.io/YoutubeChannelWebsite/
+https://chemistry.lkgforit.com/
 
 ## Demo 2:
 https://tv.lkgforit.com/
 
 ## Demo 3
-https://tnpscquickies.github.io/YoutubeChannelWebsite/
+https://tnpsc.lkgforit.com/
 
 ## Detailed Article:
 https://lkgforit.com/personal-youtube-channel-videos-website-hosted-in-github-pages-for-free-which-populates-content-by-itself
@@ -40,3 +40,6 @@ Reference:
 https://github.com/dsebastien/youtubeChannelVideosFinder
 
 https://github.com/nathancy/jekyll-embed-video
+
+Theme:
+https://jekyll-themes.com/memoirs/
